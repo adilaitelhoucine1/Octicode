@@ -1,0 +1,343 @@
+{
+  "info": {
+    "name": "Notes & Summaries API",
+    "description": "REST API for managing patients, voice notes, and summaries",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "apiKey",
+      "value": "dev-api-key-12345",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Patients",
+      "item": [
+        {
+          "name": "List Patients",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/patients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients"]
+            }
+          }
+        },
+        {
+          "name": "Create Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"dateOfBirth\": \"1990-01-15\",\n  \"medicalRecordNumber\": \"MRN001\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/patients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients"]
+            }
+          }
+        },
+        {
+          "name": "Get Patient",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/patients/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "patient-id-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Patient",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Doe\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/patients/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "patient-id-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Patient",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/patients/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "patient-id-here"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Voice Notes",
+      "item": [
+        {
+          "name": "List Voice Notes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/voice-notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "voice-notes"]
+            }
+          }
+        },
+        {
+          "name": "Create Voice Note",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": \"patient-id-here\",\n  \"title\": \"Initial Consultation\",\n  \"duration\": 180,\n  \"recordedAt\": \"2024-01-15T10:30:00.000Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/voice-notes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "voice-notes"]
+            }
+          }
+        },
+        {
+          "name": "Get Voice Note",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/voice-notes/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "voice-notes", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "voice-note-id-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Voice Note",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/voice-notes/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "voice-notes", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "voice-note-id-here"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Summaries",
+      "item": [
+        {
+          "name": "List Summaries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/summaries",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "summaries"]
+            }
+          }
+        },
+        {
+          "name": "Create Summary",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"voiceNoteId\": \"voice-note-id-here\",\n  \"content\": \"Patient presented with symptoms of fever and cough for 3 days. No travel history. Recommended rest and fluids.\",\n  \"keyPoints\": [\n    \"Fever for 3 days\",\n    \"Persistent cough\",\n    \"No travel history\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/summaries",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "summaries"]
+            }
+          }
+        },
+        {
+          "name": "Get Summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/summaries/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "summaries", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "summary-id-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Summary",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/summaries/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "summaries", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "summary-id-here"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
