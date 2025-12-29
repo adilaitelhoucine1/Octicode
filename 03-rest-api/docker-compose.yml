@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - API_KEY=dev-api-key-12345
+      - LOG_LEVEL=info
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
